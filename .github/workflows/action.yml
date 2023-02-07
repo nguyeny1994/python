@@ -25,11 +25,11 @@ jobs:
       #     url=google.com python url-check.py
       - name: Check result
         continue-on-error: true
-        if: ${{ step.web_health_check.outputs.result == '200' }}
+        if: ${{ steps.web_health_check.outputs.result == '200' }}
         run: echo $result
       - name: Check result 1
         # continue-on-error: true
-        if: ${{ step.web_health_check.outputs.result != '200' }}
+        if: ${{ steps.web_health_check.outputs.result != '200' }}
         run: |
-          echo ${{ step.web_health_check.outputs.result }}
+          echo ${{ steps.web_health_check.outputs.result }}
 
