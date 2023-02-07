@@ -19,12 +19,11 @@ jobs:
       #   run: pip test
       - name: Run python file
         id: web_health_check
-        run: |
-          result=$(url=google.com python url-check.py)
-          echo $result
+        # run: |
+        if: result=$(url=google.com python url-check.py) == '200'
+        echo $result
       #     url=google.com python url-check.py
       - name: Check result
-        uses: web_health_check
         continue-on-error: true
         if: ${{ env.result == '200' }}
         run: echo $result
