@@ -20,7 +20,7 @@ jobs:
       - name: Run python file
         id: web_health_check
         # run: |
-        if: result=$(url=google.com python url-check.py) == '200'
+        if: ${{ env.result=$(url=google.com python url-check.py) == '200' }}
         echo $result
       #     url=google.com python url-check.py
       - name: Check result
