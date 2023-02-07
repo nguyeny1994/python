@@ -28,9 +28,9 @@ jobs:
         env:
           test: ${{ env.result }}
         if: ${{ env.test == '200' }}
-        run: echo Đây là website
+        run: echo $test
       - name: Check result 1
         # continue-on-error: true
         if: ${{ env.test != '200' }}
-        run: echo Đây là website
+        run: echo $test
 
