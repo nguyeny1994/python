@@ -30,5 +30,6 @@ jobs:
       - name: Check result 1
         # continue-on-error: true
         if: ${{ env.result != '200' }}
-        run: echo $result
+        run: |
+          echo $result
 
