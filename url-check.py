@@ -11,6 +11,5 @@ y='http://' + url_test
 def get_status():
     x = requests.get(y)
     print(x.status_code)
-    return x.status_code
-
+    return str(x.status_code)
 get_status()
