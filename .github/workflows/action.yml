@@ -20,16 +20,16 @@ jobs:
       - name: Run python file
         id: web_health_check
         run: |
-          result=$(url=google.com python url-check.py)
-          echo $result
+          echo result=$(url=google.com python url-check.py) >> $GITHUB_OUTPUT
+          # echo $result
       #     url=google.com python url-check.py
       - name: Check result
         continue-on-error: true
-        if: ${{ env.result == '200' }}
+        if: ${{ env.web_health_check.outputs.result == '200' }}
         run: echo $result
       - name: Check result 1
         # continue-on-error: true
-        if: ${{ env.result != '200' }}
+        if: ${{ env.web_health_check.outputs.result != '200' }}
         run: |
-          echo $result
+          echo ${{ env.web_health_check.outputs.result }}
 
