@@ -21,7 +21,7 @@ jobs:
         id: web_health_check
         # run: |
         if: ${{ env.result=$(url=google.com python url-check.py) == '200' }}
-        echo $result
+        run: echo $result
       #     url=google.com python url-check.py
       - name: Check result
         continue-on-error: true
