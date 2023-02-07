@@ -20,7 +20,7 @@ jobs:
       - name: Run python file
         id: web_health_check
         run: |
-          echo "result=$(url=google.com python url-check.py)"" >> $GITHUB_OUTPUT
+          echo "result=$(url=google.com python url-check.py)" >> $GITHUB_OUTPUT
       #     url=google.com python url-check.py
       - name: Check result
         continue-on-error: true
