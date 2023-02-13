@@ -25,7 +25,7 @@ jobs:
       # - name: Test with pytest
       #   run: pip test
       - name: test
-        run: echo ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
+        run: echo "${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
       - name: Run python file
         id: web_health_check
         if: ${{ github.event.inputs.choice == 'google.com' }}
