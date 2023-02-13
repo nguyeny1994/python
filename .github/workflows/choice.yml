@@ -9,7 +9,7 @@ on:
         - google.com
         - xvideo.com
 jobs:
-  test-google:
+  test-link:
     name: "test google link"
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +26,7 @@ jobs:
       #   run: pip test
       - name: Run python file
         id: web_health_check
-        if: ${{ github.event.inputs.action == 'google.com' }}
+        if: ${{ github.event.inputs.action == "google.com" }}
         run: |
           echo "result=$(url=google1.com python url-check.py)" >> $GITHUB_OUTPUT
       #     url=google.com python url-check.py
