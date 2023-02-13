@@ -10,6 +10,7 @@ on:
         - xvideo.com
 jobs:
   test-google:
+    name: "test google link"
     if: ${{ github.event.inputs.action == 'google.com' }}
     runs-on: ubuntu-latest
     steps:
@@ -37,7 +38,8 @@ jobs:
         # continue-on-error: true
         if: ${{ steps.web_health_check.outputs.result != '200' }}
         run: echo ${{ steps.web_health_check.outputs.result }}
-   test-xvideo:
+  test-xvideo:
+    name: "test xvideo link"
     if: ${{ github.event.inputs.action == 'xvideo.com' }}
     runs-on: ubuntu-latest
     steps:
@@ -65,4 +67,3 @@ jobs:
         # continue-on-error: true
         if: ${{ steps.web_health_check.outputs.result != '200' }}
         run: echo ${{ steps.web_health_check.outputs.result }}
-
