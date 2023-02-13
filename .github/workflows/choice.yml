@@ -1,0 +1,67 @@
+name: Python package
+
+on: workflow_dispatch
+  inputs:
+      name:
+        type: choice
+        options: 
+        - google.com
+        - xvideo.com
+jobs:
+  test-google:
+    if: ${{ github.event.inputs.action == 'google.com' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      # - name: Test with pytest
+      #   run: pip test
+      - name: Run python file
+        id: web_health_check
+        run: |
+          echo "result=$(url=google1.com python url-check.py)" >> $GITHUB_OUTPUT
+      #     url=google.com python url-check.py
+      - name: Check result
+        continue-on-error: true
+        if: ${{ steps.web_health_check.outputs.result == '200' }}
+        run: echo ${{ steps.web_health_check.outputs.result }}
+      - name: Check result 1
+        # continue-on-error: true
+        if: ${{ steps.web_health_check.outputs.result != '200' }}
+        run: echo ${{ steps.web_health_check.outputs.result }}
+   test-xvideo:
+    if: ${{ github.event.inputs.action == 'xvideo.com' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      # - name: Test with pytest
+      #   run: pip test
+      - name: Run python file
+        id: web_health_check
+        run: |
+          echo "result=$(url=google1.com python url-check.py)" >> $GITHUB_OUTPUT
+      #     url=google.com python url-check.py
+      - name: Check result
+        continue-on-error: true
+        if: ${{ steps.web_health_check.outputs.result == '200' }}
+        run: echo ${{ steps.web_health_check.outputs.result }}
+      - name: Check result 1
+        # continue-on-error: true
+        if: ${{ steps.web_health_check.outputs.result != '200' }}
+        run: echo ${{ steps.web_health_check.outputs.result }}
+
