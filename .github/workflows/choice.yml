@@ -25,10 +25,10 @@ jobs:
       # - name: Test with pytest
       #   run: pip test
       - name: test
-        run: echo ${{ github.event.inputs.action }}
+        run: echo ${{ github.event.inputs.choice }}
       - name: Run python file
         id: web_health_check
-        if: ${{ github.event.inputs.action == 'google.com' }}
+        if: ${{ github.event.inputs.choice == 'google.com' }}
         run: |
           echo "result=$(url=google1.com python url-check.py)" >> $GITHUB_OUTPUT
       #     url=google.com python url-check.py
