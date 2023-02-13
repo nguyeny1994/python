@@ -1,8 +1,9 @@
 name: Python package
 
-on: workflow_dispatch
-  inputs:
-    resoure:
+on:
+  workflow_dispatch:
+    inputs:
+      resoure:
         type: choice
         options: 
         - google.com
