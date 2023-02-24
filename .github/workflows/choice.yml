@@ -7,7 +7,7 @@ on:
         type: choice
         options: 
         - google.com
-        - xvideo.com
+        - google1.com
 jobs:
   test-link:
     if: ${{ github.event.inputs.resoure == 'google.com' }}
@@ -42,7 +42,7 @@ jobs:
         run: echo ${{ steps.web_health_check.outputs.result }}
   test-xvideo:
     name: "test xvideo link"
-    if: ${{ github.event.inputs.resource == 'xvideo.com' }}
+    if: ${{ github.event.inputs.resoure == 'google1.com' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
