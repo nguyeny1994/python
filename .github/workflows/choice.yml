@@ -66,6 +66,6 @@ jobs:
         if: ${{ steps.web_health_check.outputs.result == '200' }}
         run: echo ${{ steps.web_health_check.outputs.result }}
       - name: Check result 1
-        # continue-on-error: true
+        continue-on-error: true
         if: ${{ steps.web_health_check.outputs.result != '200' }}
         run: echo ${{ steps.web_health_check.outputs.result }}
