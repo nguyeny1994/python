@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          path: /requirements.txt
+          path: requirements.txt
       - name: Read file
         run: |
           ls
