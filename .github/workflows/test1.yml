@@ -12,7 +12,14 @@ jobs:
       - name: Read file
         run: |
           ls
-           cat requirements.txt
+          #cat requirements.txt
+      - name: Read package.json
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./requirements.txt
+      - name: Echo package.json
+        run: echo "${{ steps.package.outputs.content }}"
 #       - name: Set up Python ${{ matrix.python-version }}
 #         uses: actions/setup-python@v4
 #         with:
