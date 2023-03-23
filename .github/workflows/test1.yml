@@ -17,8 +17,7 @@ jobs:
         id: hello
         with:
           path: requirements.txt
-
-      - run: echo $TEXT
+      - run: in file
         env:
           TEXT: ${{ steps.hello.outputs.text }}
 #       - name: Set up Python ${{ matrix.python-version }}
